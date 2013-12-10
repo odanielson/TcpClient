@@ -15,6 +15,7 @@ example: $(TARGET).a example.c
 	$(CC) example.c lib$(TARGET).a -o example
 
 clean:
+	rm -rf example
 	rm -rf *.o
 	rm -rf *.a
 	rm -rf *~
