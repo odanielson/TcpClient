@@ -1,5 +1,5 @@
-#ifndef TCPSOCKET_H
-#define TCPSOCKET_H
+#ifndef TCPCLIENT_H
+#define TCPCLIENT_H
 
 #include <arpa/inet.h>
 #include <unistd.h>
@@ -10,7 +10,7 @@ typedef struct _TcpHandle {
     struct sockaddr_in m_servAddr;
 } TcpHandle;
 
-struct _TcpSocketMap {
+struct _TcpClientMap {
     TcpHandle * (*Create)(const char *host, int port);
     void (*Close)(TcpHandle *a_handle);
     size_t (*Send)(TcpHandle *a_handle, char *a_buffer, size_t a_length);
@@ -18,6 +18,6 @@ struct _TcpSocketMap {
 
 };
 
-const struct _TcpSocketMap TcpSocket;
+const struct _TcpClientMap TcpClient;
 
 #endif

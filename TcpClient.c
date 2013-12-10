@@ -3,7 +3,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 
-#include "TcpSocket.h"
+#include "TcpClient.h"
 
 static TcpHandle *Create(const char *a_host, int a_port)
 {
@@ -53,7 +53,7 @@ static size_t Read(TcpHandle *a_handle, char *a_buffer, size_t a_maxLength)
     return read(a_handle->m_sockFD, a_buffer, a_maxLength);
 }
 
-const struct _TcpSocketMap TcpSocket = {
+const struct _TcpClientMap TcpClient = {
     .Create = Create,
     .Close = Close,
     .Send = Send,

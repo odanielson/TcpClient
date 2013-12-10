@@ -1,9 +1,9 @@
 CC = gcc
-CFLAGS = -Wall -O2
+CFLAGS = -Wall -Werror -O2
 
-TARGET = TcpSocket
+TARGET = TcpClient
 
-all: $(TARGET).a test
+all: $(TARGET).a example
 
 $(TARGET).o: $(TARGET).c $(TARGET).h
 	$(CC) $(CFLAGS) $(TARGET).c -c -o $(TARGET).o
@@ -11,8 +11,8 @@ $(TARGET).o: $(TARGET).c $(TARGET).h
 $(TARGET).a: $(TARGET).o
 	$(AR) rcs lib$(TARGET).a $(TARGET).o
 
-test: $(TARGET).a test.c
-	$(CC) test.c lib$(TARGET).a -o test
+example: $(TARGET).a example.c
+	$(CC) example.c lib$(TARGET).a -o example
 
 clean:
 	rm -rf *.o
