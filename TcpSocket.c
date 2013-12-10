@@ -5,7 +5,7 @@
 
 #include "TcpSocket.h"
 
-static TcpHandle *Create(const char *host, int port)
+static TcpHandle *Create(const char *a_host, int a_port)
 {
     TcpHandle *handle = malloc(sizeof(TcpHandle));
     handle->m_sockFD = 0;
@@ -20,9 +20,9 @@ static TcpHandle *Create(const char *host, int port)
 
     memset(&(handle->m_servAddr), '0', sizeof(handle->m_servAddr));
     handle->m_servAddr.sin_family = AF_INET;
-    handle->m_servAddr.sin_port = htons(port);
+    handle->m_servAddr.sin_port = htons(a_port);
 
-    if (inet_pton(AF_INET, host, &(handle->m_servAddr).sin_addr) <= 0)
+    if (inet_pton(AF_INET, a_host, &(handle->m_servAddr).sin_addr) <= 0)
     {
         free(handle);
         return NULL;
